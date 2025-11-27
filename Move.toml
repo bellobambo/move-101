@@ -1,0 +1,16 @@
+[package]
+name = "my-aptos-dapp"
+version = "1.0.0"
+authors = []
+
+[addresses]
+bambo_addr = "c69d33e896930d84c1e0872d31c06c357d8fa1f08315969ffef46038626cab50"
+
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
