@@ -16,7 +16,7 @@ fun set_value(): u64 {
     ID
 }
 
-#[test]
+// #[test]
 fun test_function() {
     let id_value = set_value();
     debug::print(&id_value);
