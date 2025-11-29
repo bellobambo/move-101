@@ -1,4 +1,6 @@
 module bambo_addr::Sample4{
+    use std::debug::print;
+    use std::string::{String, utf8};
 
     fun sample_for_loop(count : u64): u64{
         let value = 0;
@@ -33,8 +35,22 @@ module bambo_addr::Sample4{
         value
     }
 
-    #[test_only]
-    use std::debug::print;
+
+    fun sample_abort_error(value : String){
+        if(value == utf8(b"Basmbo"))
+            print(&utf8(b"Correct!"))
+        else
+            abort 123
+    }
+
+
+
+    fun sample_assert_error(value : String){
+        assert!(value == utf8(b"Bambo"), 123);
+        print(&utf8(b"Correct!"))
+    }
+
+
 
 
     #[test]
@@ -58,6 +74,18 @@ module bambo_addr::Sample4{
        print(&result);
     }
 
+
+    #[test]
+    #[expected_failure]
+    fun test_abort(){
+        sample_abort_error(utf8(b"Bambo"));
+    }
+
+    #[test]
+    // #[expected_failure]
+    fun test_assert(){
+        sample_assert_error(utf8(b"Bambo"));
+    }
 
 
 
